@@ -1,0 +1,332 @@
+/* Variáveis de tema */
+:root {
+  --main-red: #EA0001;
+  --page-bg: var(--main-red);
+  --elem-bg: var(--main-red);
+  --text: #000;
+  --elem-text: #000;
+  --border: #000;
+  --button-bg: var(--main-red);
+  --button-hover: #c40000;
+  --slider-bg: var(--main-red);
+  --thumb: #000;
+  --thumb-alt: #555;
+}
+
+/* Tema invertido */
+body.theme-dark {
+  --page-bg: #ffffff;
+  --elem-bg: #ffffff;
+  --elem-text: #000000;
+  --border: #000000;
+  --button-bg: #ffffff;
+  --button-hover: #444;
+  --slider-bg: #000000;
+  --thumb: #fff;
+  --thumb-alt: #aaa;
+}
+
+/* Global: Zera margens, usa box-sizing e padroniza fontes */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--page-bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  font-weight: bold;
+  height: 100vh;
+  margin: 0;
+}
+
+/* Estilo para todos os botões, garantindo que usem a mesma tipografia
+   e desabilitando seleção de texto */
+button {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* .wrapper - Container geral */
+.wrapper {
+  display: flex;
+  gap: 20px;
+  margin: 20px;
+  height: calc(100vh - 40px);
+}
+
+/* PAINEL LATERAL (ASIDE) */
+.controls {
+  width: 250px;
+  border: 2px solid var(--border);
+  background-color: var(--elem-bg);
+  color: var(--elem-text);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* Topo do painel: Logo */
+.logo-container {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.logo-rodape {
+  width: 220px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Corpo dos controles */
+.controls-body {
+  flex: 1;
+}
+
+/* Grupos de controle */
+.control-group.vertical {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.control-group label {
+  font-size: 12px;
+  margin-bottom: 4px;
+}
+
+/* Inputs, selects, botões e seletor de cor */
+.control-group input,
+.control-group select,
+.control-group input[type="color"],
+.control-group button {
+  width: 100%;
+  padding: 4px 6px;
+  font-size: 12px;
+  border: 1px solid var(--border);
+  background-color: transparent;
+  color: var(--elem-text);
+  margin-bottom: 4px;
+  outline: none;
+}
+
+/* Botões principais */
+.control-group button {
+  background-color: var(--button-bg);
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border-radius: 4px;
+}
+
+.control-group button:hover {
+  background-color: var(--button-hover);
+}
+
+/* Botões pequenos (+ e -) */
+.buttons-inline {
+  display: flex;
+  gap: 4px;
+}
+
+.buttons-inline button {
+  flex: 1;
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: bold;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background-color: transparent;
+  transition: background-color 0.2s;
+}
+
+.buttons-inline button:hover {
+  background-color: var(--button-bg);
+}
+
+/* Sliders compactos */
+.slider-group {
+  margin-bottom: 8px;
+}
+
+.slider-group label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 12px;
+  margin-bottom: 3px;
+}
+
+.slider-group input[type="range"] {
+  width: 100%;
+  height: 4px;
+  background-color: var(--slider-bg);
+  border-radius: 4px;
+  -webkit-appearance: none;
+  appearance: none;
+  outline: none;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: var(--thumb);
+  cursor: pointer;
+  margin-top: -3px;
+}
+
+.slider-group input[type="range"]::-moz-range-thumb {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: var(--thumb-alt);
+  cursor: pointer;
+}
+
+/* Container dos botões de ação */
+.btn-container {
+  border: 1px solid var(--border);
+  padding: 6px;
+  background-color: var(--elem-bg);
+  color: var(--elem-text);
+  margin-top: 8px;
+}
+
+.btn-container button {
+  font-size: 10px;
+  padding: 4px 6px;
+  margin-bottom: 4px;
+}
+
+/* Botões de exportação */
+.btn-export {
+  background-color: var(--elem-bg);
+  color: var(--elem-text);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-export:hover {
+  background-color: var(--button-hover);
+  color: var(--elem-text);
+}
+
+.btn-export img,
+.btn-export svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Botão de Alternar Tema (Container independente) */
+.theme-toggle-container {
+  margin-top: 10px;
+}
+
+.theme-toggle-container button {
+  width: 100%;
+  background-color: var(--elem-bg);
+  color: var(--elem-text);
+  border: 2px solid var(--border);
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.theme-toggle-container button:hover {
+  background-color: var(--button-hover);
+  color: var(--elem-text);
+}
+
+/* Rodapé do painel lateral */
+.footer-panel {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.versao {
+  font-size: 12px;
+  color: var(--elem-text);
+}
+
+/* Área principal (MAIN) */
+#gridContainer {
+  flex: 1;
+  border: 2px solid var(--border);
+  background-color: var(--elem-bg);
+  color: var(--elem-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  padding: 0;
+}
+
+/* Tabela */
+table {
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+th,
+td {
+  border: 1px solid var(--border);
+  background: var(--elem-bg);
+  color: var(--elem-text);
+  text-align: center;
+  vertical-align: middle;
+  transition: width 0.5s ease, height 0.5s ease, background-color 0.5s ease;
+}
+
+.selected-header {
+  background-color: #af0000 !important;
+  color: var(--elem-text) !important;
+}
+
+body.theme-dark .selected-header {
+  background-color: grey !important;
+}
+
+table tr:first-child th {
+  position: sticky;
+  top: 0;
+  background-color: var(--elem-bg);
+  z-index: 10;
+  height: 20px;
+  min-height: 20px;
+  max-height: 20px;
+}
+
+table tr:first-child th:first-child {
+  left: 0;
+  z-index: 11;
+}
+
+table th:first-child {
+  width: 30px;
+  min-width: 30px;
+  max-width: 30px;
+}

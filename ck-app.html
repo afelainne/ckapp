@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>CK Generate – @bylotipa</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Grade fixa sem rolagem, com seleção de célula, sliders para expansão e modo pintura." />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"
+          crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+
+  <!-- Container geral (wrapper) -->
+  <div class="wrapper">
+    <aside class="controls">
+      <!-- Logomarca no topo -->
+      <div class="logo-container">
+        <img src="https://64.media.tumblr.com/fc0242cefb767c8dc2b6e5588c144ce5/5f6e4242e233cc41-a5/s400x600/7f53d24d1da653d5afeb20ce22f09947fbe6e572.pnj"
+             alt="Logotipo" class="logo-rodape" crossOrigin="anonymous" />
+      </div>
+
+      <!-- Corpo dos controles -->
+      <div class="controls-body">
+        <!-- Configurações de Linhas -->
+        <div class="control-group vertical">
+          <label for="rows">Linhas</label>
+          <input type="number" id="rows" min="1" max="70" value="20" />
+          <div class="buttons-inline">
+            <button id="dec-rows">–</button>
+            <button id="inc-rows">+</button>
+          </div>
+        </div>
+
+        <!-- Configurações de Colunas -->
+        <div class="control-group vertical">
+          <label for="cols">Colunas</label>
+          <input type="number" id="cols" min="1" max="70" value="10" />
+          <div class="buttons-inline">
+            <button id="dec-cols">–</button>
+            <button id="inc-cols">+</button>
+          </div>
+        </div>
+
+        <!-- Seleção de Célula -->
+        <div class="control-group vertical">
+          <label for="selRow">Linha Selecionada</label>
+          <input type="number" id="selRow" min="1" value="1" />
+          <label for="selCol">Coluna Selecionada</label>
+          <input type="text" id="selCol" value="A" />
+        </div>
+
+        <!-- Sliders Existentes -->
+        <div class="control-group slider-group">
+          <label for="vertRange">Alcance Vertical:<span id="vertRangeVal">2</span></label>
+          <input type="range" id="vertRange" min="2" max="20" value="2" />
+        </div>
+
+        <div class="control-group slider-group">
+          <label for="horizRange">Alcance Horizontal:<span id="horizRangeVal">2</span></label>
+          <input type="range" id="horizRange" min="2" max="20" value="2" />
+        </div>
+
+        <div class="control-group slider-group">
+          <label for="intensity">Intensidade:<span id="intensityVal">1.0</span></label>
+          <input type="range" id="intensity" min="0.1" max="5" step="0.1" value="1.0" />
+        </div>
+
+        <!-- Novo slider para controlar a força do Random Size -->
+        <div class="control-group slider-group">
+          <label for="randomStrength">Força do Random Size:<span id="randomStrengthVal">0.1</span></label>
+          <input type="range" id="randomStrength" min="0.05" max="1" step="0.05" value="0.1" />
+        </div>
+
+        <!-- Slider para Tamanho da Célula Selecionada -->
+        <div class="control-group slider-group">
+          <label for="cellSize">Tamanho da Célula Selecionada: <span id="cellSizeVal">40</span>px</label>
+          <input type="range" id="cellSize" min="2" max="400" value="40" />
+        </div>
+
+        <!-- Grupo de Botões de Modo de Pintura -->
+        <div class="control-group vertical">
+          <label for="paintColor">Cor de Pintura</label>
+          <input type="color" id="paintColor" value="#000000" />
+          <button id="togglePaint">Pintura ON</button>
+          <button id="eraserBtn">Borracha</button>
+        </div>
+
+        <!-- Container dos Botões de Ação -->
+        <div class="control-group vertical btn-container">
+          <button id="updateGrid">Resetar Grid</button>
+          <button id="randomSizeBtn">Random Size OFF</button>
+          <button id="persistBtn">Persistir Seleção OFF</button>
+          <button id="exportPng" class="btn-export btn-export-png">Exportar PNG</button>
+          <button id="exportSvg" class="btn-export btn-export-svg">Exportar SVG</button>
+        </div>
+
+        <!-- Botão de Alternar Tema (Container independente) -->
+        <div class="theme-toggle-container">
+          <button id="toggleTheme">TEMA BRANCO</button>
+        </div>
+      </div>
+
+      <!-- Rodapé do painel lateral -->
+      <div class="footer-panel">
+        <p class="versao">Versão Beta @bylotipa</p>
+      </div>
+    </aside>
+
+    <main id="gridContainer"></main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
